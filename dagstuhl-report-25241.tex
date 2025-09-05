@@ -76,8 +76,26 @@
 \maketitle
 
 \begin{abstract}
-This report documents the program and the outcomes of Dagstuhl Seminar 25241 "Utilising and Scaling the WebAssembly Semantics". For a real abstract, one should write a little bit more here.
+WebAssembly (Wasm) is a safe and portable, low level bytecode format used in browsers, IoT applications, cloud, edge, embedded systems and blockchains. Its popularity as a technology for both practically building and theoretically investigating verified and secure systems has been growing rapidly. This Dagstuhl Seminar brought together leading academics and industry representatives involved in Wasm, both as designers, implementers or clients of the technology, to exchange ideas around topics such as tools for formal specification, verified compilation, software fault isolation and language interoperability. 
 \end{abstract}
+
+\abstracttitle{Executive Summary}
+\abstractauthor[Andreas Rossberg]{Andreas Rossberg}
+\license
+\jointwork{Amal Ahmed, Andreas Rossberg, Deian Stefan, and Conrad Watt}
+
+WebAssembly (Wasm) is a safe and portable code format used in a broad variety of computational environments, such as Web browsers, cloud, edge, IoT, embedded systems, and blockchains. As a low-level programming language its instruction set is close to that of physical hardware, yet its semantics enforces memory safety, isolation, and the absence of undefined behavior. A distinguishing feature of Wasm is that its official specification contains a complete formal semantics, based directly on techniques developed and established by the scientific community, and proved sound with machine-verified proofs. Its popularity as a technology for both practically building and theoretically investigating verified and secure systems has hence been growing rapidly.
+
+This Dagstuhl Seminar, brought together all sides interested in Wasm, its formal semantics, and its application to verification and generation techniques. By including academics and industry representatives involved in Wasm, both as designers, implementers or clients of the technology (e.g., compiler writers), we hoped to initiate discussion and new research about evolving the specification, as well as utilizing it for implementing verified systems, programming languages, and new forms of tooling. The main focus was around the following four topics: 
+
+\textbf{Tools for formal specification.} Maintaining the current level of rigor in Wasm's specification is an ongoing challenge. While many new features have been proposed for Wasm, the risk is that either the formal specification gets in the way of evolving the language, or that the formalization falls behind.
+
+\textbf{Verified compilation.} We believe that Wasm's formal semantics is an excellent starting point for performing verification in depth for systems built around the language. This applies both to compilation from source languages to Wasm, and compilation from Wasm to native code as it occurs in Wasm engines and their just-in-time compilers.
+
+\textbf{Software fault isolation.} Software fault isolation can be implemented at various granularities and using different techniques, ranging from inline software checks to hardware-based isolation. Such techniques can inform both Wasm's design and its implementations. Wasm can also serve as a vehicle for lightweight isolation, from sandboxing libraries to more ambitious projects, such as a hypervisor or an embedded execution environment.
+
+\textbf{Language interoperability.} In Wasm multi-language interoperation can occur in two ways: first, as the interaction between a language compiled to Wasm and the language in which the host environment operates, and second between multiple different languages compiled to Wasm.
+
 
 \tableofcontents
 
@@ -325,13 +343,13 @@ A problem for interpreters is the handling of non-determinism in the specificati
 
 Other topics of interest were the integration with spec update process, especially when certain backends lag behind, customising and subsetting specifications, and extending SpecTec to include theorem statements, in a way that would be abstract enough for different mechanisation backends. SpecTec’s general expressiveness was briefly discussed (e.g., the availability of evaluation contexts, binders, quantifiers, or judgements as expressions), as well as its IL semantics and possible meta-theory, a more robust and configurable Il-to-AL translation, and paths towards the ideal backend modularisation.
 
-\abstracttitle{Working Group Summary: Static Analysis}
+\abstracttitle{Static Analysis}
 \abstractauthor[Michelle Thalakottur, Léo Andrès, Alexander Bai, Thomas Lively, Marco Patrignani, and Guannan Wei]{Michelle Thalakottur (Northeastern University - Boston, US), Léo Andrès (OCamlPro - Paris, FR), Alexander Bai (MPI für Software Systems - Saarbrücken, DE), Thomas Lively (Google - Mountain View, US), Marco Patrignani (University of Trento, IT), and Guannan Wei (INRIA - Paris, FR \& Tufts University - Medford, US)}
 \license
 
 We discussed what each of us were interested in, which was, performant static analyses, composable static analyses and multi-language analyses. We talked about handling various proposals and how non-determinism is a hard open problem. We also talked about how modeling system calls and calls to JavaScript is a problem faced by every static analysis tool. We all agreed that compiler-produced annotations or hints that are preserved from the source and embedded in custom sections in the Wasm binary, would be useful for a more precise analysis. Thomas Lively gave us an overview of how binaryen, a WebAssembly toolchain from Google, handles the Javascript environment in its static analysis, the different analyses being done in binaryen and what they would like to see implemented or improved. We talked about the difficulties we face while  productionizing research static analysis tools. We ended by talking about the possibility of using an analysis platform like CodeQL for multi-language analysis.
 
-\abstracttitle{Panel on Instrumentation}
+\abstracttitle{Instrumentation}
 \abstractauthor[Ben L. Titzer, Chris Fallin, Ralph Squillace, and Thomas Trenner]{Ben L. Titzer (Carnegie Mellon University - Pittsburgh, US), Chris Fallin (F5 - San Jose, US), Ralph Squillace (Microsoft - Redmond, US), and Thomas Trenner (Siemens AG - Nürnberg, DE)}
 \license
 
@@ -345,7 +363,7 @@ Other issues that were raised were the inability to debug live cyberphysical sys
 
 The group discussed remote debugging protocols and replay. More standardization and standard interfaces within the Wasm community would help. Members considered syncing again on how to design remote interfaces, e.g. to dig into how the debugging protocols work in VSCode.
 
-\abstracttitle{Working Group on Concurrency in Wasm}
+\abstracttitle{Concurrency in Wasm}
 \abstractauthor[Conrad Watt]{Conrad Watt (Nanyang TU - Singapore, SG)}
 \license
 
@@ -357,7 +375,7 @@ This working group was convened to discuss ways to support the compilation of co
 
 (3) as Wasm transitions to a new specification infrastructure based on the SpecTec tool and DSL, new threads features being added to Wasm will require SpecTec to be extended. This represents an opportunity to ensure threads are specified precisely, as well as a hazard that SpecTec extension for this feature may prove to be onerous.
 
-\abstracttitle{Working Group Summary: Testing}
+\abstracttitle{Testing}
 \abstractauthor[Dongjun Youn]{Dongjun Youn (KAIST - Daejeon, KR)}
 \license
 
